@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
       - name: exercise
-        image: r2d2r2d2/exercise:0.1a
+        image: r2d2r2d2/exercise:latest
         env:
         - name: REDIS_URL
           value: "redis://redis/0"
