@@ -1,0 +1,61 @@
+#Service and Deployment with nanomicroservice
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-exercise
+  labels:
+    app: exercise
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: exercise
+  template:
+    metadata:
+      labels:
+        app: exercise
+    spec:
+      containers:
+      - name: exercise
+        image: r2d2r2d2/exercise:latest
+        env:
+        - name: REDIS_URL
+          value: "redis://redis/0"
+        ports:
+        - containerPort: 5000
+        imagePullPolicy: Always
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - mountPath: /etc/nginx # mount nginx-conf volumn to /etc/nginx
+          readOnly: true
+          name: nginx-conf
+        - mountPath: /var/log/nginx
+          name: log
+      volumes:
+      - name: nginx-conf
+        configMap:
+          name: nginx-conf # place ConfigMap `nginx-conf` on /etc/nginx
+          items:
+            - key: nginx.conf
+              path: nginx.conf
+      - name: log
+        emptyDir: {}
+
+---
+kind: Service 
+apiVersion: v1 
+metadata:
+  name: devops-exercise 
+spec:
+  # For expose the service on a static port on each node
+  type: NodePort
+  selector:
+    app: exercise 
+  ports:
+    - nodePort: 31000
+      port: 8080
+      #For nginx port
+      targetPort: 8080
