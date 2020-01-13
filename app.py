@@ -1,7 +1,7 @@
 import os
 from flask import Flask,request
 from flask_redis import FlaskRedis
-
+# Init app and redis connection
 app = Flask(__name__)
 app.config['REDIS_URL'] = os.getenv('REDIS_URL') or "redis://localhost:6379/0"
 redis_client = FlaskRedis(app)
