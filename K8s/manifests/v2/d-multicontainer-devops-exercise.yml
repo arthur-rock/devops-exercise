@@ -3,17 +3,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: devops-exercise
+  namespace: devops-exercise
   labels:
-    app: exercise
+    app: v2-exercise
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: exercise
+      app: v2-exercise
   template:
     metadata:
       labels:
-        app: exercise
+        app: v2-exercise
     spec:
       containers:
       - name: exercise
@@ -29,11 +30,9 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
-        - mountPath: /etc/nginx # mount nginx-conf volumn to /etc/nginx
+        - mountPath: /etc/nginx # mount nginx-conf volum to /etc/nginx
           readOnly: true
           name: nginx-conf
-        - mountPath: /var/log/nginx
-          name: log
       volumes:
       - name: nginx-conf
         configMap:
@@ -41,21 +40,20 @@ spec:
           items:
             - key: nginx.conf
               path: nginx.conf
-      - name: log
-        emptyDir: {}
 
 ---
 kind: Service 
 apiVersion: v1 
 metadata:
-  name: devops-exercise 
+  name: v2-devops-exercise
+  namespace: devops-exercise
 spec:
   # For expose the service on a static port on each node
   type: NodePort
   selector:
-    app: exercise 
+    app: v2-exercise 
   ports:
-    - nodePort: 31000
+    - nodePort: 31001
       port: 8080
       #For nginx port
       targetPort: 8080
