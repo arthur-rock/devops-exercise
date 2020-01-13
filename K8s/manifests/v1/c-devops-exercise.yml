@@ -1,36 +1,9 @@
-#Service and Deployment for redis and extra points 
-apiVersion: v1
-kind: Pod
-metadata:
-  name: redis
-  labels:
-    name: redis
-spec:
-  containers:
-  - name: redis
-    image: redis
-    ports:
-    - containerPort: 6379
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: redis
-  labels:
-    name: redis
-spec:
-  ports:
-  - port: 6379
-    protocol: TCP
-    targetPort: 6379
-  selector:
-    name: redis
 #Service and Deployment with nanomicroservice
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: devops-exercise
+  namespace: devops-exercise
   labels:
     app: exercise
 spec:
@@ -57,7 +30,8 @@ spec:
 kind: Service 
 apiVersion: v1 
 metadata:
-  name: devops-exercise 
+  name: devops-exercise
+  namespace: devops-exercise
 spec:
   # For expose the service on a static port on each node
   type: NodePort
