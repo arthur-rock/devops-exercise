@@ -34,12 +34,12 @@ Create a service configuration file to deploy the service on your kubernetes clu
 The repository includes 2 solutions, K8s/manisfests/v1/ and K8s/manifests/v2/ both implement the extra point.
 
 - [K8s/manifests/v1](https://github.com/arthur-rock/devops-exercise/tree/master/K8s/manifests/v1)
-	- a-namespace.yml. Create a namespace devops-exercise
-	- b-redis.yml. Define a pod with a instance redis in namespace devops-exercise.
-	- c-devops-exercise.yml. Define a Deployment with 2 replicas in namespace devops-exercise. 
-	You can see running with the next command (sudo only for k3s):
+	- **a-namespace.yml.** Create a namespace devops-exercise
+	- **b-redis.yml.** Define a pod with a instance redis in namespace devops-exercise.
+	- **c-devops-exercise.yml.** Define a Deployment with 2 replicas in namespace devops-exercise. 
+	- You can see running with the next command (sudo only for k3s):
 	`sudo kubectl apply -f v1`
-	-- Output expected
+    - Output expected:\n
 	`
 	namespace/devops-exercise created
 	pod/redis created
