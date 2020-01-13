@@ -8,8 +8,8 @@ metadata:
     name: v2-redis
 spec:
   containers:
-  - name: v2-redis
-    image: v2-redis
+  - name: redis
+    image: redis
     ports:
     - containerPort: 6379
 ---
@@ -17,6 +17,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: v2-redis
+  namespace: devops-exercise
   labels:
     name: v2-redis
 spec:

@@ -21,7 +21,7 @@ spec:
         image: r2d2r2d2/exercise:latest
         env:
         - name: REDIS_URL
-          value: "redis://redis/0"
+          value: "redis://v2-redis/0"
         ports:
         - containerPort: 5000
         imagePullPolicy: Always

@@ -1,5 +1,5 @@
-apiVersion:  V1
-Kind: Namespace
+apiVersion:  v1
+kind: Namespace
 metadata: 
   name: devops-exercise
   labels:
