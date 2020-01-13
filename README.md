@@ -37,16 +37,33 @@ The repository includes 2 solutions, K8s/manisfests/v1/ and K8s/manifests/v2/ bo
 	- a-namespace.yml. Create a namespace devops-exercise
 	- b-redis.yml. Define a pod with a instance redis in namespace devops-exercise.
 	- c-devops-exercise.yml. Define a Deployment with 2 replicas in namespace devops-exercise. 
-You can see running with the next command (sudo only for k3s):
-`sudo kubectl apply -f v1/`
+	You can see running with the next command (sudo only for k3s):
+	`sudo kubectl apply -f v1`
+	-- Output expected
+	`
+	namespace/devops-exercise created
+	pod/redis created
+	service/redis created
+	deployment.apps/devops-exercise created
+	service/devops-exercise created
+	`
+	** After minutes, you can exec next commands **
+	`sudo kubectl get svc/devops-exercise --namespace="devops-exercise" -o wide| tail -n +2| awk '{print $3":"$5}'| awk -F: '{print "curl -X GET http://"$1":"$2"\ncurl -X POST "$1":"$2}'`
+	-- Output expected
+	` 
+	curl -X GET http://10.43.40.215:8080
+	curl -X POST 10.43.40.215:8080
+	`
+	The ip is the ClusterIp associated with the svc. 
+	Or you can replace that ip for any ip of the cluster and remember use the port 31000 because the svc associated is the type NodePort.
 
 - [K8s/manifests/v2](https://github.com/arthur-rock/devops-exercise/tree/master/K8s/manifests/v2)
 	- a-namespace.yml. Create a namespace devops-exercise
 	- b-configMap-nginx.yml. Create a configMap for nginx, this configMap contain the minimum directives like upstream  and hide nginx version.
 	- c-redis-counter.yml. Define a pod with a instance redis in namespace devops-exercise.
 	- d-multicontainer-devops-exercise.yml. Define multicontainer Deployment, all request through nginx and nginx make request to app server.
-You can see running with the next command (sudo only for k3s):
-`sudo kubectl apply -f v2/`
+	You can see running with the next command (sudo only for k3s):
+	`sudo kubectl apply -f v2`
 
   
 
