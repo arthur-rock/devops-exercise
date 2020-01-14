@@ -37,7 +37,7 @@ The repository includes 2 solutions, K8s/manisfests/v1/ and K8s/manifests/v2/ bo
 	- **a-namespace.yml.** Create a namespace devops-exercise
 	- **b-redis.yml.** Define a pod with a instance redis in namespace devops-exercise.
 	- **c-devops-exercise.yml.** Define a Deployment with 2 replicas in namespace devops-exercise. 
-You can see the first solution running with the next command (sudo only for k3s):
+##You can see the first solution running with the next command (sudo only for k3s):
 	```
 	sudo kubectl apply -f v1
 	Output expected:
@@ -47,7 +47,7 @@ You can see the first solution running with the next command (sudo only for k3s)
 	deployment.apps/devops-exercise created
 	service/devops-exercise created
 	```
-After minutes, you can exec next commands:
+##After minutes, you can exec next commands:
 	```
 	sudo kubectl get svc/devops-exercise --namespace="devops-exercise" -o wide| tail -n +2| awk '{print $3":"$5}'| awk -F: '{print "curl -X GET http://"$1":"$2"\ncurl -X POST "$1":"$2}'
 	
