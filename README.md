@@ -88,9 +88,23 @@ The repository includes 2 solutions, K8s/manisfests/v1/ and K8s/manifests/v2/ bo
 		
 #### If you use k3s
 
-You can execute this command for list all image `sudo k3s crictl images` like r2d2r2d2/exercise:latest
+You can execute this command for list all image `sudo k3s crictl images` like r2d2r2d2/exercise:latest, output expected:
 
-  
+```
+IMAGE                                      TAG                 IMAGE ID            SIZE
+docker.io/coredns/coredns                  1.6.3               c4d3d16fe508b       14.2MB
+docker.io/library/nginx                    latest              c7460dfcab502       50.8MB
+docker.io/library/redis                    latest              9b188f5fb1e6e       35.8MB
+docker.io/library/traefik                  1.7.19              aa764f7db3051       24MB
+docker.io/r2d2r2d2/exercise                latest              113e8b4c5b0de       42.3MB
+docker.io/r2d2r2d2/exercise                <none>              59d1a1c5c0332       42.3MB
+docker.io/r2d2r2d2/exercise                0.1a                948aa3472a533       42.1MB
+docker.io/rancher/klipper-helm             v0.2.2              a6403444ee609       46.8MB
+docker.io/rancher/klipper-lb               v0.1.2              897ce3c5fc8ff       2.71MB
+docker.io/rancher/local-path-provisioner   v0.0.11             9d12f9848b99f       12MB
+docker.io/rancher/metrics-server           v0.3.6              9dd718864ce61       10.5MB
+docker.io/rancher/pause                    3.1                 da86e6ba6ca19       327kB
+``` 
 
 ### Extra Points
 
