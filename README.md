@@ -32,6 +32,7 @@ This solution only build the image when you commit and push on master and result
 ### Deployment
 
 Create a service configuration file to deploy the service on your kubernetes cluster and expose it to the world.
+
 The repository includes 2 solutions, K8s/manisfests/v1/ and K8s/manifests/v2/ both implement the extra point.
 
 - [K8s/manifests/v1](https://github.com/arthur-rock/devops-exercise/tree/master/K8s/manifests/v1)
