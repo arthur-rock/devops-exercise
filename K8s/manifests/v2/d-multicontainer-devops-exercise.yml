@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devops-exercise
+  name: v2-devops-exercise
   namespace: devops-exercise
   labels:
     app: v2-exercise
