@@ -86,9 +86,9 @@ The repository includes 2 solutions, K8s/manisfests/v1/ and K8s/manifests/v2/ bo
 		The ip is from the ClusterIp associated with the svc. 
 		Or you can replace that ip for any ip of the cluster and remember use the port 31001 because the svc associated is the type NodePort.
 		
-**If you use k3s**
-You can execute this command for list all image `sudo k3s crictl images` like r2d2r2d2/exercise:latest
+#### If you use k3s**
 
+You can execute this command for list all image `sudo k3s crictl images` like r2d2r2d2/exercise:latest
 
   
 
