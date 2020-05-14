@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        DATE=$(date +%s)
+        echo $password | docker login --username r2d2r2d2 --password-stdin
+        docker build . --file Dockerfile --tag r2d2r2d2/exercise:rc-$(DATE)
+        docker push r2d2r2d2/exercise:rc-DATE
+        
+      
