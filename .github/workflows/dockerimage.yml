@@ -19,8 +19,8 @@ jobs:
           password: ${{ github.password  }}
       run: |
         DATE=$(date +%s)
-        echo $password | docker login --username r2d2r2d2 --password-stdin
+        #echo $password | docker login --username r2d2r2d2 --password-stdin
         docker build . --file Dockerfile --tag r2d2r2d2/exercise:rc-$(DATE)
-        docker push r2d2r2d2/exercise:rc-DATE
+        #docker push r2d2r2d2/exercise:rc-DATE
         
       
