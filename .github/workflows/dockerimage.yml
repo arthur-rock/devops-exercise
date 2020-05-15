@@ -23,6 +23,6 @@ jobs:
       run: |
         DATE=$(date +%s)
         docker build . --file Dockerfile --tag r2d2r2d2/exercise:rc-$(DATE)
-        docker push r2d2r2d2/exercise:rc-DATE
+        docker push r2d2r2d2/exercise:rc-$(DATE)
         
       
