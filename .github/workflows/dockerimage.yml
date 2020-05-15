@@ -1,5 +1,6 @@
-name: Docker Image CI
+name: Build and push image # Name
 
+#When trigger action
 on:
   push:
     branches: [ master ]
@@ -7,22 +8,20 @@ on:
     branches: [ master ]
 
 jobs:
-
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
+
     steps:
-      
-    - uses: actions/checkout@v2
-      
-    - uses: azure/docker-login@v1
-      with:
-        username: 'r2d2r2d2'
-        password: ${{ secrets.password }}
+      - uses: actions/checkout@v2     
+      - uses: azure/docker-login@v1
+        with:
+          username: 'r2d2r2d2'
+          password: ${{ secrets.password }}
         
-    - name: Build the Docker image
-      run: |
-        DATE=$(date +%s)
-        docker build . --file Dockerfile --tag r2d2r2d2/exercise:rc-$DATE
-        docker push r2d2r2d2/exercise:rc-$DATE
+      - name: Build the Docker image
+        run: |
+          DATE=$(date +%s)
+          docker build . --file Dockerfile --tag r2d2r2d2/exercise:rc-$DATE
+          docker push r2d2r2d2/exercise:rc-$DATE
         
       
