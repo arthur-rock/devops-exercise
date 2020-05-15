@@ -1,15 +1,19 @@
 name: Build and push image # Name
 
-#When trigger action
+#Trigger the workflow
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+  # schedule:
+  #   # * is a special character in YAML so you have to quote this string
+  #   - cron:  '*/15 * * * *'
+#One or more jobs,
+#Jobs run in parallel by default
 jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
+  build-and-push: #Name
+    runs-on: ubuntu-latest #Environment %(windows, Linux y MacOS) Dv2 -> 2vCore, 7GB RAM, 14GB Disk
 
     steps:
       #https://github.com/marketplace?query=azure%2Flogin
@@ -21,6 +25,9 @@ jobs:
         
       - name: Build the Docker image
         run: |
+          echo "**********+"
+          env
+          echo "**********+"
           DATE=$(date +%s)
           docker build . --file Dockerfile --tag r2d2r2d2/exercise:rc-$DATE
           docker push r2d2r2d2/exercise:rc-$DATE
