@@ -9,18 +9,22 @@ on:
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
-
     steps:
+      
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+      
+    - uses: azure/docker-login@v1
       env:
-          password: ${{ github.password  }}
+        password: ${{ github.password  }}
+      with:
+        username: 'r2d2r2d2'
+        password: '{{ password }}'
+        
+    - name: Build the Docker image
       run: |
         DATE=$(date +%s)
-        #echo $password | docker login --username r2d2r2d2 --password-stdin
         docker build . --file Dockerfile --tag r2d2r2d2/exercise:rc-$(DATE)
-        #docker push r2d2r2d2/exercise:rc-DATE
+        docker push r2d2r2d2/exercise:rc-DATE
         
       
