@@ -15,11 +15,9 @@ jobs:
     - uses: actions/checkout@v2
       
     - uses: azure/docker-login@v1
-      env:
-        password: ${{ github.password  }}
       with:
         username: 'r2d2r2d2'
-        password: ${{ password }}
+        password: ${{ secretspassword }}
         
     - name: Build the Docker image
       run: |
