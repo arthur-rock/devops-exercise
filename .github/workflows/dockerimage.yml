@@ -19,7 +19,7 @@ jobs:
         password: ${{ github.password  }}
       with:
         username: 'r2d2r2d2'
-        password: '{{ password }}'
+        password: ${{ password }}
         
     - name: Build the Docker image
       run: |
