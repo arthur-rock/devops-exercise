@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      #- uses: actions/checkout@v2     
-      - uses: azure/docker-login@v1
+      - uses: actions/checkout@v2     
+      - uses: azure/docker-login@v1 #login dockerhub
         with:
           username: 'r2d2r2d2'
           password: ${{ secrets.password }}
