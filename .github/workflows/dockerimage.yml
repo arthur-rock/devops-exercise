@@ -12,11 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      #https://github.com/marketplace?query=azure%2Flogin
       - uses: actions/checkout@v2     
       - uses: azure/docker-login@v1 #login dockerhub
         with:
           username: 'r2d2r2d2'
-          password: ${{ secrets.password }}
+          password: ${{ secrets.password }} #
         
       - name: Build the Docker image
         run: |
